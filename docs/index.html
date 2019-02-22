@@ -25,8 +25,7 @@
 </section>
 <section>
     <input type="text" class=activate onclick="activateInput()" value="add a new goal!">
-    <input type="text" class=activate value="add an amount of time" style="display: none;">
-    <button class=activate onclick="addField()" style="display: none;">add goal</button>
+    
 </section>
 <footer>
 <p>footer</p>
@@ -36,28 +35,42 @@
 function updateGoal(number){
 document.getElementById(number).previousElementSibling.value+=Number(document.getElementById(number).value)
 }
-    
+
+var canSet = true;
 function activateInput(){
-document.getElementsByClassName("activate")[1].style.display = "inline";
-document.getElementsByClassName("activate")[2].style.display = "inline";
+    
+if(canSet){
+    
+var addTime = document.createElement("input")
+addTime.setAttribute("value","add an amount of time")
+document.getElementsByClassName("activate")[0].after(addTime)
+
+var addGoal = document.createElement("button")
+addGoal.innerHTML = "add goal"
+addGoal.setAttribute("onClick","addField()")
+document.getElementsByClassName("activate")[0].nextSibling.after(addGoal)
+    
+canSet = false;
 }
+}
+var count = 4
     
 function addField(){
     
 //do stuff with the information entered by the user (add goal as p, bar with amount done, field and plus button)
 
-var goal = document.getElementsByClassName("activate")[1].value;
-var time = document.getElementsByClassName("activate")[2].value;
-document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("p"),document.getElementsByClassName("activate")[0])
+var goal = document.getElementsByClassName("activate")[0].nextSibling.value;
+var time = document.getElementsByClassName("activate")[0].nextSibling.nextSibling.value;
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("p"),document.getElementsByClassName("activate")[0]).setAttribute("class","goaltext")
 document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("progress"),document.getElementsByClassName("activate")[0])
-document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("input"),document.getElementsByClassName("activate")[0])
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("input"),document.getElementsByClassName("activate")[0]).setAttribute("id",count++)
 document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("button"),document.getElementsByClassName("activate")[0])
 
-document.getElementsByClassName("activate")[2].remove();
-document.getElementsByClassName("activate")[1].remove();
+document.getElementsByClassName("activate")[0].nextSibling.nextSibling.remove();
+document.getElementsByClassName("activate")[0].nextSibling.remove();
 document.getElementsByClassName("activate")[0].value = "add a new goal!";
     
-
+canSet = true
 
 }
 
