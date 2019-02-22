@@ -9,16 +9,58 @@
   <h1>daily learning achievements</h1>
 </header>
 <section>
-    <p style="float: left;">test</p><progress style="float: left;" value="22" max="100"></progress>
+    <p class=goaltext>test</p><progress style="float: left;" value="22" max="100"></progress>
+    <input type="text" id=1>
+    <button onclick="updateGoal(1)">+</button>
 </section>
-<section style="width: 100%;">
-    <p style="float: left;">test</p><progress style="float: left;" value="22" max="100"></progress>
+<section>
+    <p class=goaltext>test</p><progress style="float: left;" value="22" max="100"></progress>
+    <input type="text" id=2>
+    <button onclick="updateGoal(2)">+</button>
 </section>
-<section style="width: 100%;">
-    <p style="float: left;">test</p><progress style="float: left;" value="22" max="100"></progress>
-    </section>
+<section>
+    <p class=goaltext>test</p><progress style="float: left;" value="22" max="100"></progress>
+    <input type="text" id=3>
+    <button onclick="updateGoal(3)">+</button>
+</section>
+<section>
+    <input type="text" class=activate onclick="activateInput()" value="add a new goal!">
+    <input type="text" class=activate value="add an amount of time" style="display: none;">
+    <button class=activate onclick="addField()" style="display: none;">add goal</button>
+</section>
 <footer>
 <p>footer</p>
 </footer>
+    
+<script>
+function updateGoal(number){
+document.getElementById(number).previousElementSibling.value+=Number(document.getElementById(number).value)
+}
+    
+function activateInput(){
+document.getElementsByClassName("activate")[1].style.display = "inline";
+document.getElementsByClassName("activate")[2].style.display = "inline";
+}
+    
+function addField(){
+    
+//do stuff with the information entered by the user (add goal as p, bar with amount done, field and plus button)
+
+var goal = document.getElementsByClassName("activate")[1].value;
+var time = document.getElementsByClassName("activate")[2].value;
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("p"),document.getElementsByClassName("activate")[0])
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("progress"),document.getElementsByClassName("activate")[0])
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("input"),document.getElementsByClassName("activate")[0])
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("button"),document.getElementsByClassName("activate")[0])
+
+document.getElementsByClassName("activate")[2].remove();
+document.getElementsByClassName("activate")[1].remove();
+document.getElementsByClassName("activate")[0].value = "add a new goal!";
+    
+
+
+}
+
+</script>
 </body>
 </html>
