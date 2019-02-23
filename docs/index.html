@@ -9,17 +9,17 @@
   <h1>daily learning achievements</h1>
 </header>
 <section>
-    <p class=goaltext>test</p><progress style="float: left;" value="22" max="100"></progress>
+    <p class=goaltext>webeC first prototype</p><progress style="float: left;" value="12" max="14"></progress>
     <input type="text" id=1>
     <button onclick="updateGoal(1)">+</button>
 </section>
 <section>
-    <p class=goaltext>test</p><progress style="float: left;" value="22" max="100"></progress>
+    <p class=goaltext>vana Exercise 7 again</p><progress style="float: left;" value="0" max="4"></progress>
     <input type="text" id=2>
     <button onclick="updateGoal(2)">+</button>
 </section>
 <section>
-    <p class=goaltext>test</p><progress style="float: left;" value="22" max="100"></progress>
+    <p class=goaltext>listen to music</p><progress style="float: left;" value="5" max="14"></progress>
     <input type="text" id=3>
     <button onclick="updateGoal(3)">+</button>
 </section>
@@ -79,8 +79,15 @@ document.getElementsByClassName("activate")[0].parentNode.insertBefore(button,do
 
 document.getElementsByClassName("activate")[0].nextSibling.nextSibling.remove();
 document.getElementsByClassName("activate")[0].nextSibling.remove();
-document.getElementsByClassName("activate")[0].value = "add a new goal!";
-    
+
+var section = document.createElement("section");
+var activate = document.createElement("input");
+activate.setAttribute("class","activate");
+activate.setAttribute("value","add a new goal!");
+activate.setAttribute("onclick","activateInput()");
+document.getElementsByClassName("activate")[0].parentElement.after(section);
+section.append(activate);
+document.getElementsByClassName("activate")[0].remove()
 canSet = true
 
 }
