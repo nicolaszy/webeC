@@ -59,12 +59,23 @@ function addField(){
     
 //do stuff with the information entered by the user (add goal as p, bar with amount done, field and plus button)
 
-var goal = document.getElementsByClassName("activate")[0].nextSibling.value;
-var time = document.getElementsByClassName("activate")[0].nextSibling.nextSibling.value;
-document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("p"),document.getElementsByClassName("activate")[0]).setAttribute("class","goaltext")
-document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("progress"),document.getElementsByClassName("activate")[0])
-document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("input"),document.getElementsByClassName("activate")[0]).setAttribute("id",count++)
-document.getElementsByClassName("activate")[0].parentNode.insertBefore(document.createElement("button"),document.getElementsByClassName("activate")[0])
+var goal = document.getElementsByClassName("activate")[0].value;
+var time = document.getElementsByClassName("activate")[0].nextSibling.value;
+var text = document.createElement("p");
+text.innerHTML = goal
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(text,document.getElementsByClassName("activate")[0]).setAttribute("class","goaltext")
+var progress = document.createElement("progress");
+progress.setAttribute("max",time);
+progress.setAttribute("value",0);
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(progress,document.getElementsByClassName("activate")[0])
+var input = document.createElement("input");
+input.setAttribute("id",count)
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(input,document.getElementsByClassName("activate")[0])
+var button = document.createElement("button");
+button.innerHTML = "+";
+button.setAttribute("onClick","updateGoal("+count+")");
+count+=1;
+document.getElementsByClassName("activate")[0].parentNode.insertBefore(button,document.getElementsByClassName("activate")[0])
 
 document.getElementsByClassName("activate")[0].nextSibling.nextSibling.remove();
 document.getElementsByClassName("activate")[0].nextSibling.remove();
